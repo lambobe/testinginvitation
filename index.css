@@ -106,13 +106,13 @@ button:active{
 }
 
 .modal img {
-    width: 100px;
-    height: 100px;
-    margin-bottom: 15px;
+    width: 150px;
+    height: 150px;
+    margin-bottom: 5px;
 }
 
 .modal h2 {
-    color: #ff4d4d;
+    color: #fa88e7;
     margin: 10px 0;
     font-size: 24px;
 }
@@ -124,11 +124,11 @@ button:active{
 }
 
 .modal-button {
-    background-color: #ff4d4d;
+    background-color: #ad42b1;
     color: white;
     border: none;
     padding: 10px 25px;
-    border-radius: 25px;
+    border-radius: 5px;
     cursor: pointer;
     font-size: 16px;
     margin-top: 15px;
@@ -136,7 +136,7 @@ button:active{
 }
 
 .modal-button:hover {
-    background-color: #ff3333;
+    background-color: #f7a2fa;
 }
 
 @keyframes slideIn {
