@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Valentine Invitation</title>
+    <title>Bernie's Invitation</title>
     <link rel="stylesheet" href="index.css">
 </head>
 <body>
     <div class="container">
         
         <div class="gif-container">
-            <img src="https://media1.tenor.com/m/F9fCppCpm3EAAAAC/lots-of-love-love-you.gif" alt="">
+            <img src="https://media1.tenor.com/m/5FR_vwczMGYAAAAC/hi-there-my-love-love.gif" alt="">
         </div>
     </div>
     <div class="pin-pad">
@@ -32,59 +32,80 @@
         </div>
     </div>
 
-    <div class="modal" id="errorModal">
-        <div class="modal-content"><img src="https://media.tenor.com/TDoaU1-fcDgAAAAM/pout-girl.gif" alt="Sad Face">
-        <h2>Ay sayop lage!</h2>
-        <p>please hinumdomi. dili ra kani ato password huhu. </p>
-        <button class="modal-button" onclick="closeModal()">Balik</button>
-        </div>
+<div class="error-modal" id="errorModal">
+    <div class="modal-content">
+        <img src="https://media.tenor.com/TDoaU1-fcDgAAAAM/pout-girl.gif" alt="Sad Face">
+        <h2>Incorrect ang PIN langga</h2>
+        <p>Sayop langga. Lahi nga pin. makahinumdom paka? :( </p>
+        <button class="modal-button" onclick="closeErrorModal()">Try Again</button>
     </div>
+</div>
 
-    <script>
-        let currentPin = '';
-        const correctPin = '012001';
-        const display = document.getElementById('display');
-        const modal = document.getElementById('errorModal');
+<div class="success-modal" id="successModal">
+    <div class="modal-content">
+        <img src="https://media.tenor.com/49uF8YRnVCUAAAAj/hello-hello-there.gif" alt="Success Hearts">
+        <h2>AYAY KA!</h2>
+        <p>Yehey! Sakto ang PIN langga! Happy Monthsary daan ❤️</p>
+        <button class="modal-button" onclick="redirectToSuccess()">Please Continue palangga</button>
+    </div>
+</div>
 
-        function addNumber(num){
-            if(currentPin.length < 6) {
-                currentPin += num;
-                updateDisplay();
-            }
+<script>
+    let currentPin = '';
+    const correctPin = '041921';
+    const display = document.getElementById('display');
+    const errorModal = document.getElementById('errorModal');
+    const successModal = document.getElementById('successModal');
+
+    function addNumber(num){
+        if(currentPin.length < 6) {
+            currentPin += num;
+            updateDisplay();
         }
-        function updateDisplay(){
-            display.textContent = currentPin;
-        }
+    }
 
-        function clearDisplay(){
-            currentPin = '';
-            display.textContent = 'Enter our day';
-        }
+    function updateDisplay(){
+        display.textContent = currentPin;
+    }
 
-        function checkPin(){
-            if(currentPin === correctPin){
-                window.location.href='';
+    function clearDisplay(){
+        currentPin = '';
+        display.textContent = 'Enter PIN Langga';
+    }
 
-            }
-            else{
-                showModal();
-            }
+    function checkPin(){
+        if(currentPin === correctPin){
+            showSuccessModal();
+        } else {
+            showErrorModal();
+        }
+    }
 
-        }
-        function showModal(){
-            modal.style.display = 'flex';
-        }
+    function showErrorModal() {
+        errorModal.style.display = 'flex';
+    }
 
-        function closeModal(){
-            modal.style.display = 'none';
-            clearDisplay();
+    function closeErrorModal() {
+        errorModal.style.display = 'none';
+        clearDisplay();
+    }
 
+    function showSuccessModal() {
+        successModal.style.display = 'flex';
+    }
+
+    function redirectToSuccess() {
+        window.location.href = 'invite.html';
+    }
+
+    window.onclick = function(event) {
+        if (event.target == errorModal) {
+            closeErrorModal();
         }
-        window.onclick = function(event){
-            if(event.target == modal){
-                closeModal();
-            }
+        if (event.target == successModal) {
+            redirectToSuccess();
         }
+    }
     </script>
     
 </body>
