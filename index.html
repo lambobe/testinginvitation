@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valentine Invitation</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <div class="container">
+        
+        <div class="gif-container">
+            <img src="https://media1.tenor.com/m/F9fCppCpm3EAAAAC/lots-of-love-love-you.gif" alt="">
+        </div>
+    </div>
+    <div class="pin-pad">
+        
+        <div class="display" id="display">Enter PIN Langga</div>
+        <div class="keypad">
+            <button onclick="addNumber('1')">1</button>
+            <button onclick="addNumber('2')">2</button>
+            <button onclick="addNumber('3')">3</button>
+            <button onclick="addNumber('4')">4</button>
+            <button onclick="addNumber('5')">5</button>
+            <button onclick="addNumber('6')">6</button>
+            <button onclick="addNumber('7')">7</button>
+            <button onclick="addNumber('8')">8</button>
+            <button onclick="addNumber('9')">9</button>
+            <button class="action-btn" onclick="clearDisplay()">Clear</button>
+            <button onclick="addNumber('0')">0</button>
+            <button class="action-btn" onclick="checkPin()">Enter</button>
+        </div>
+    </div>
+
+    <div class="modal" id="errorModal">
+        <div class="modal-content"><img src="https://media.tenor.com/TDoaU1-fcDgAAAAM/pout-girl.gif" alt="Sad Face">
+        <h2>Sayop langga!</h2>
+        <p>please hinumdomi. dili ra kani ato password huhu. </p>
+        <button class="modal-button" onclick="closeModal()">Balik</button>
+        </div>
+    </div>
+
+    <script>
+        let currentPin = '';
+        const correctPin = '012001';
+        const display = document.getElementById('display');
+        const modal = document.getElementById('errorModal');
+
+        function addNumber(num){
+            if(currentPin.length < 6) {
+                currentPin += num;
+                updateDisplay();
+            }
+        }
+        function updateDisplay(){
+            display.textContent = currentPin;
+        }
+
+        function clearDisplay(){
+            currentPin = '';
+            display.textContent = 'Enter our day';
+        }
+
+        function checkPin(){
+            if(currentPin === correctPin){
+                window.location.href='';
+
+            }
+            else{
+                showModal();
+            }
+
+        }
+        function showModal(){
+            modal.style.display = 'flex';
+        }
+
+        function closeModal(){
+            modal.style.display = 'none';
+            clearDisplay();
+
+        }
+        window.onclick = function(event){
+            if(event.target == modal){
+                closeModal();
+            }
+        }
+    </script>
+    
+</body>
+</html>
